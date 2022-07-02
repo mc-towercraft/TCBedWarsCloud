@@ -100,5 +100,12 @@
             <version>3.4.0-RELEASE</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>me.towercraft</groupId>
+            <artifactId>connection-service</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/connection-service-1.0.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

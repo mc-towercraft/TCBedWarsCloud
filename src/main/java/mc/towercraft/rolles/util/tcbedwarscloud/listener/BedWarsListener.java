@@ -8,10 +8,15 @@ import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.bukkit.BukkitCloudNetHelper;
 import de.dytanic.cloudnet.wrapper.Wrapper;
 import mc.towercraft.rolles.util.tcbedwarscloud.TCBedWarsCloud;
+import me.towercraft.connection.ConnectionService;
+import me.towercraft.connection.server.ServerConnectApi;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class BedWarsListener implements Listener {
 
@@ -28,6 +33,9 @@ public class BedWarsListener implements Listener {
 
     @EventHandler
     public void onGameEnd(GameEndEvent event) {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+            Bukkit.getOnlinePlayers().forEach(player -> ServerConnectApi.getInstance().connectByServerGroup(player, TCBedWarsCloud.config.groupServer));
+        }, 20);
         Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
             ServiceInfoSnapshot currentServiceInfoSnapshot = Wrapper.getInstance().getCurrentServiceInfoSnapshot();
             CloudNetDriver.getInstance().getCloudServiceProvider(currentServiceInfoSnapshot.getName()).stop();
