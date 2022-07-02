@@ -1,0 +1,4 @@
+name: TCBedWarsCloud
+version: '${project.version}'
+main: mc.towercraft.rolles.util.tcbedwarscloud.TCBedWarsCloud
+authors: [ Rolles ]
