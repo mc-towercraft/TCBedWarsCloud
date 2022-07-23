@@ -1,1 +1,15 @@
-server-group: "Hub"
+server-group: "BWADSolo"
+rewards:
+  for-winner-team:
+    - tclevel addrandommoney {player} 25 35
+    - tclevel addrandomexp {player} 75 125
+  for-loose-team:
+    - tclevel addrandommoney {player} 5 15
+    - tclevel addrandomexp {player} 20 65
+  for-killer:
+    - tclevel addrandomexp {player} 10 20
+  for-deceased:
+    - tclevel removeexp {player} 5
+  bed-destroy-player:
+    - tclevel addrandommoney {player} 5 10
+    - tclevel addrandomexp {player} 15 25
